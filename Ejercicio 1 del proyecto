@@ -1,0 +1,17 @@
+def ordenar_descendente(lista):
+    
+    if len(lista) <= 1:
+        return lista
+    else:
+        
+        extremo = lista[0]
+        mayores = [x for x in lista[1:] if x >= extremo]
+        menores = [x for x in lista[1:] if x < extremo]
+        return ordenar_descendente(mayores) + [extremo] + ordenar_descendente(menores)
+
+
+entrada = input("Ingrese una lista de números separados por comas: ")
+numeros = [int(x.strip()) for x in entrada.split(',')]
+
+resultado = ordenar_descendente(numeros)
+print("Lista ordenada de mayor a menor:", resultado)
