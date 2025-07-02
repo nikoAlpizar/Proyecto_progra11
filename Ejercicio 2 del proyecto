@@ -1,0 +1,23 @@
+class Robot:
+    def _init_(self):
+        self.x = 0
+        self.y = 0
+        self.ordenes = []
+
+    def mueve(self, orden):
+        for o in orden:
+            if o == 'A': self.y += 1
+            elif o == 'R': self.y -= 1
+            elif o == 'I': self.x -= 1
+            elif o == 'D': self.x += 1
+            else: print("  Advertencia: orden inválida:", o)
+            self.ordenes.append(o)
+
+    def posicion(self): return (self.x, self.y)
+    def historial(self): return ''.join(self.ordenes)
+    def volver_origen(self):
+        return 'I',self.x + 'D'(-self.x) + 'R',self.y + 'A'(-self.y)
+    def distancia(self): return len(self.ordenes)
+    def desplazamiento(self): return abs(self.x) + abs(self.y)
+
+robot = Robot()
